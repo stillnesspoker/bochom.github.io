@@ -31,8 +31,9 @@ function notes_ready() {
         if (this.classList.contains("active")) {
           this.classList.remove("active");
           gsap.set(this, {
-            height: "30%",
-            clearProps: "all"
+            height: 'auto',
+            zIndex: 10, /* Ensure the active note appears on top */
+            clearProps: 'all'
           });
         } else {
           for (let i = 0; i < notes.length; i++) {
