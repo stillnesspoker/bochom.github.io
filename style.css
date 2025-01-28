@@ -23,6 +23,14 @@ pointer-events: none;
 .letter.active .letter-content {
 opacity: 1;
 pointer-events: auto;
+z-index: 9999 !important; /* Force highest stacking context */
+  background-color: rgb(228 164 164 / 90%); /* Semi-transparent white background */
+  padding: 5px; /* Add some padding for spacing */
+  border-radius: 5px; /* Rounded corners for a cleaner look */
+}
+.letter.active {
+  z-index: 9999 !important; /* Force highest stacking context */
+  transform: scale(1.5) translateY(-20%); /* Adjust if needed */
 }
 
 .one{
