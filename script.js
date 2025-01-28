@@ -1,135 +1,64 @@
-//->Made it by 1vanbrav0
-//Variables
+// Variables
 let mobile_media_query = window.matchMedia("(max-width: 400px)");
 let tablet_media_query = window.matchMedia(
   "(min-width: 400px) and (max-width: 600px)"
 );
 const notes = document.querySelectorAll(".js-note");
 
-//-> Function that resets the size of the notes.
+// Function to reset the size of notes
 function recize_notes() {
-  for (let i = 0; i < notes.length; i++) {
-    if (notes[i].classList.contains("active")) {
-      notes[i].classList.remove("active");
-      gsap.set(notes[i], {
-        height: "30%",
-        clearProps: "all"
-      });
-    }
-  }
+  notes.forEach((note) => {
+    note.classList.remove("active");
+    gsap.set(note, {
+      height: "30%",
+      clearProps: "all",
+    });
+  });
 }
 
-//-> Main function that enables all the notes.
+// Function to enable all notes
 function notes_ready() {
   gsap.to(".js-envelop-content", {
     height: "110%",
-    duration: 0.5
+    duration: 0.5,
   });
 
-  for (let i = 0; i < notes.length; i++) {
-    notes[i].addEventListener("click", function () {
-      if (mobile_media_query.matches) {
-        if (this.classList.contains("active")) {
-          this.classList.remove("active");
-          gsap.set(this, {
-            height: "30%",
-            clearProps: "all"
-          });
-        } else {
-          for (let i = 0; i < notes.length; i++) {
-            if (notes[i].classList.contains("active")) {
-              notes[i].classList.remove("active");
-              gsap.set(notes[i], {
-                height: "30%",
-                clearProps: "all"
-              });
-            }
-          }
-          this.classList.add("active");
-          gsap.set(this, {
-            height: 125 + 40 * i + "%"
-          });
-        }
-      } else if (tablet_media_query.matches) {
-        if (this.classList.contains("active")) {
-          this.classList.remove("active");
-          gsap.set(this, {
-            height: "30%",
-            clearProps: "all"
-          });
-        } else {
-          for (let i = 0; i < notes.length; i++) {
-            if (notes[i].classList.contains("active")) {
-              notes[i].classList.remove("active");
-              gsap.set(notes[i], {
-                height: "30%",
-                clearProps: "all"
-              });
-            }
-          }
-          this.classList.add("active");
-          gsap.set(this, {
-            height: 80 + 21 * i + "%"
-          });
-        }
+  notes.forEach((note) => {
+    note.addEventListener("click", function () {
+      if (this.classList.contains("active")) {
+        this.classList.remove("active");
+        gsap.set(this, {
+          height: "30%",
+          clearProps: "all",
+        });
       } else {
-        if (this.classList.contains("active")) {
-          this.classList.remove("active");
-          gsap.set(this, {
-            height: "30%",
-            clearProps: "all"
-          });
-        } else {
-          for (let i = 0; i < notes.length; i++) {
-            if (notes[i].classList.contains("active")) {
-              notes[i].classList.remove("active");
-              gsap.set(notes[i], {
-                height: "30%",
-                clearProps: "all"
-              });
-            }
-          }
-          this.classList.add("active");
-          gsap.set(this, {
-            height: 70 + 20 * i + "%"
-          });
-        }
+        recize_notes();
+        this.classList.add("active");
+        gsap.set(this, {
+          height: this.scrollHeight + "px", // Dynamic height
+        });
       }
     });
-  }
+  });
 }
 
-//-> Function that set up the up paper of the envelope.
+// Function to set up the paper
 function set_up_paper() {
-  var arr = [0, 0, 100, 0, 50, 61];
   gsap.set(".js-up-paper", {
     bottom: "97%",
     rotation: 180,
     zIndex: 200,
-    clipPath:
-      "polygon(" +
-      arr[0] +
-      "%" +
-      arr[1] +
-      "%," +
-      arr[2] +
-      "%" +
-      arr[3] +
-      "%," +
-      arr[4] +
-      "%" +
-      arr[5] +
-      "%)",
-    onComplete: notes_ready
+    clipPath: "polygon(0 0, 100% 0, 50% 61%)",
+    onComplete: notes_ready,
   });
 }
 
-//-> Function that starts the up paper transition.
+// Function to handle envelope transition
 function envelop_transition() {
   gsap.to(".js-up-paper", {
     bottom: "1%",
     duration: 0.25,
-    onComplete: set_up_paper
+    onComplete: set_up_paper,
   });
   document
     .querySelector(".js-up-paper")
@@ -137,7 +66,7 @@ function envelop_transition() {
   document.querySelector(".js-up-paper").classList.remove("cursor");
 }
 
-//-> Function that allows cut the sticker.
+// Function for sticker interaction
 function sticker() {
   gsap.set(".js-sticker", { width: "20%", left: "-80%" });
   document.body.classList.remove("scissors");
@@ -150,6 +79,6 @@ function sticker() {
 
 document.querySelector(".js-sticker").addEventListener("click", sticker);
 
-window.onresize = function (event) {
+window.onresize = function () {
   recize_notes();
 };
