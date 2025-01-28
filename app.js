@@ -145,10 +145,12 @@ const heart = document.querySelector(".heart");
 const envelopeWrapper = document.querySelector(".envelope-wrapper");
 const letter = document.querySelector(".letter");
 
+// Update this section in app.js
 heart.addEventListener("click", function () {
-  // Toggle the 'flap' class on the envelope
-  envelopeWrapper.classList.toggle("flap");
-
-  // Toggle the 'active' class on the letter
-  letter.classList.toggle("active");
-});
+    // Toggle both envelope flap AND letter visibility
+    envelopeWrapper.classList.toggle("flap");
+    letter.classList.toggle("active");
+    
+    // Optional: Add/remove 'open' class if needed
+    envelopeWrapper.classList.toggle("open"); // Add this line if you need the 'open' class
+  });
