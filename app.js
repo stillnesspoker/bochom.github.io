@@ -141,16 +141,14 @@ function prevTrack(){
         playTrack();
     }
 }
-
-// Add this to your existing JavaScript
 const heart = document.querySelector(".heart");
+const envelopeWrapper = document.querySelector(".envelope-wrapper");
 const letter = document.querySelector(".letter");
 
-heart.addEventListener("click", function() {
+heart.addEventListener("click", function () {
+  // Toggle the 'flap' class on the envelope
+  envelopeWrapper.classList.toggle("flap");
+
   // Toggle the 'active' class on the letter
   letter.classList.toggle("active");
-  
-  // Optional: Close the envelope flap when letter is visible
-  const envelopeWrapper = document.querySelector(".envelope-wrapper");
-  envelopeWrapper.classList.toggle("flap");
 });
