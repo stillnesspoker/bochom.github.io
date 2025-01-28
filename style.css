@@ -128,7 +128,155 @@ body {
   margin: auto;
   top: 30%;
   left: 80%;
-  bottom: 0;
+  bottom: 0;* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+  }
+  
+  body {
+    width: 100%;
+    background-color: #000;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .envelop {
+    width: 15rem;
+    height: 10rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  
+  .envelop__front-paper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 0.7rem;
+    border: 0.35rem solid #967b5c;
+    background-color: #ba9872;
+    clip-path: polygon(100% 0%, 50% 70%, 0% 0%, 0% 100%, 100% 100%);
+    z-index: 300;
+  }
+  
+  .envelop__back-paper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 0.7rem;
+    background-color: #967b5c;
+    clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 0% 90%);
+    z-index: 100;
+  }
+  
+  .envelop__up-paper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 0.7rem;
+    background-color: #967b5c;
+    z-index: 400;
+    clip-path: polygon(0% 0%, 100% 0%, 50% 81%);
+  }
+  
+  .envelop__sticker {
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    margin: auto;
+    top: 30%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 400;
+    background-image: url("https://www.freepnglogos.com/uploads/heart-png/emoji-heart-33.png");
+    background-color: #f9f9f9;
+    border: 0.3rem solid #e2e2e2;
+    background-size: 1.5rem;
+    background-position: center;
+    cursor: pointer;
+  }
+  
+  .envelop__false-sticker {
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    margin: auto;
+    top: 30%;
+    left: 80%;
+    bottom: 0;
+    right: 0;
+    z-index: 300;
+    background-image: url("https://www.freepnglogos.com/uploads/heart-png/emoji-heart-33.png");
+    background-color: #f9f9f9;
+    border: 0.3rem solid #e2e2e2;
+    background-size: 1.5rem;
+    background-position: center;
+  }
+  
+  .envelop__content {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 200;
+  }
+  
+  .love-notes {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+  
+  .note {
+    width: 95%;
+    height: 30%;
+    background-color: #f9f9f9;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    cursor: pointer;
+  }
+  
+  .note.active {
+    z-index: 500;
+  }
+  
+  .note__text {
+    font-family: "Sofia";
+    padding: 1rem;
+    overflow-y: auto;
+    max-height: 100%;
+  }
+  
+  .note__text p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .scissors {
+    cursor: url("https://i.postimg.cc/GtLCdKxR/sisors.png"), pointer;
+  }
+  
+  .scissors:active {
+    cursor: url("https://i.postimg.cc/GtXQ7WPZ/pngwing-com.png"), pointer;
+  }
+  
+  .cursor {
+    cursor: pointer;
+  }
   right: 0;
   z-index: 300;
   background-image: url("https://www.freepnglogos.com/uploads/heart-png/emoji-heart-33.png");
