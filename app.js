@@ -1,4 +1,4 @@
-let anniversary = "2022-10-13";
+let anniversary = "2020-8-23";
 let date = new Date(anniversary);
 let dateVal = date.getTime();
 let today = new Date();
@@ -141,3 +141,16 @@ function prevTrack(){
         playTrack();
     }
 }
+
+// Add this to your existing JavaScript
+const heart = document.querySelector(".heart");
+const letter = document.querySelector(".letter");
+
+heart.addEventListener("click", function() {
+  // Toggle the 'active' class on the letter
+  letter.classList.toggle("active");
+  
+  // Optional: Close the envelope flap when letter is visible
+  const envelopeWrapper = document.querySelector(".envelope-wrapper");
+  envelopeWrapper.classList.toggle("flap");
+});
